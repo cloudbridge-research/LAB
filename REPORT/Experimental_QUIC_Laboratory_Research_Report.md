@@ -1,7 +1,7 @@
 # Experimental QUIC Laboratory Research Report
 
-**Research Period:** October 2025  
-**Laboratory:** 2GC Network Protocol Suite  
+**Research Period:** October 2025\
+**Laboratory:** 2GC Network Protocol Suite\
 **Research Focus:** Advanced QUIC Features Integration and Performance Analysis
 
 ## Executive Summary
@@ -11,159 +11,174 @@ This report presents the results of comprehensive laboratory research on experim
 ## Research Objectives
 
 ### Primary Objectives
+
 1. **Integration of Advanced QUIC Features**
-   - BBRv2 congestion control algorithm
-   - ACK-Frequency optimization (draft-ietf-quic-ack-frequency)
-   - Forward Error Correction for datagrams (XOR/RS codes)
-   - QUIC Bit Greasing (RFC 9287)
-
+   * BBRv2 congestion control algorithm
+   * ACK-Frequency optimization (draft-ietf-quic-ack-frequency)
+   * Forward Error Correction for datagrams (XOR/RS codes)
+   * QUIC Bit Greasing (RFC 9287)
 2. **Performance Analysis**
-   - Comparative analysis of CUBIC vs BBRv2
-   - ACK frequency optimization impact
-   - Load testing under various conditions
-   - RTT sensitivity analysis
-
+   * Comparative analysis of CUBIC vs BBRv2
+   * ACK frequency optimization impact
+   * Load testing under various conditions
+   * RTT sensitivity analysis
 3. **Laboratory Validation**
-   - Automated test matrix execution
-   - SLA compliance verification
-   - Baseline data collection
-   - Regression testing
+   * Automated test matrix execution
+   * SLA compliance verification
+   * Baseline data collection
+   * Regression testing
 
 ## Research Methodology
 
 ### Test Environment
-- **Platform:** Linux 5.15.0-157-generic
-- **QUIC Implementation:** quic-go v0.40.0
-- **Fork:** quic-go @ cloudbridge-exp (ACK_FREQUENCY+BBRv2)
-- **Base Version:** quic-go v0.40.0 upstream
-- **Test Duration:** 30-60 seconds per test
-- **Measurement Tools:** qlog, Prometheus metrics, custom analyzers
-- **Network Simulation:** Linux tc (netem) for RTT/loss simulation
+
+* **Platform:** Linux 5.15.0-157-generic
+* **QUIC Implementation:** quic-go v0.40.0
+* **Fork:** quic-go @ cloudbridge-exp (ACK\_FREQUENCY+BBRv2)
+* **Base Version:** quic-go v0.40.0 upstream
+* **Test Duration:** 30-60 seconds per test
+* **Measurement Tools:** qlog, Prometheus metrics, custom analyzers
+* **Network Simulation:** Linux tc (netem) for RTT/loss simulation
 
 ### Test Matrix
-- **RTT Values:** 5ms, 10ms, 25ms, 50ms, 100ms, 200ms, 500ms
-- **Load Levels:** 100, 300, 600, 1000, 2000 pps
-- **Connection Counts:** 1, 2, 4, 8, 16
-- **ACK Frequencies:** 1, 2, 3, 4, 5
-- **Algorithms:** CUBIC, BBRv2
+
+* **RTT Values:** 5ms, 10ms, 25ms, 50ms, 100ms, 200ms, 500ms
+* **Load Levels:** 100, 300, 600, 1000, 2000 pps
+* **Connection Counts:** 1, 2, 4, 8, 16
+* **ACK Frequencies:** 1, 2, 3, 4, 5
+* **Algorithms:** CUBIC, BBRv2
 
 ### Measurement Methodology
+
 1. **Automated Test Execution**
-   - RTT simulation using Linux tc (traffic control)
-   - Load generation with configurable parameters
-   - Real-time metrics collection
-
+   * RTT simulation using Linux tc (traffic control)
+   * Load generation with configurable parameters
+   * Real-time metrics collection
 2. **Data Collection**
-   - qlog files for protocol analysis
-   - Prometheus metrics for performance monitoring
-   - Application-level logs for behavior analysis
-
+   * qlog files for protocol analysis
+   * Prometheus metrics for performance monitoring
+   * Application-level logs for behavior analysis
 3. **Analysis Framework**
-   - qvis for protocol visualization
-   - Custom metrics extraction
-   - Statistical analysis of results
+   * qvis for protocol visualization
+   * Custom metrics extraction
+   * Statistical analysis of results
 
 ## Key Research Findings
 
 ### 1. BBRv2 Congestion Control Performance
 
 #### High RTT Scenarios (>50ms)
-- **BBRv2 Advantage:** 40-60% higher throughput
-- **Latency Reduction:** 25-35% lower latency
-- **Stability:** Better performance under variable RTT
+
+* **BBRv2 Advantage:** 40-60% higher throughput
+* **Latency Reduction:** 25-35% lower latency
+* **Stability:** Better performance under variable RTT
 
 #### Low RTT Scenarios (<25ms)
-- **CUBIC Performance:** Comparable to BBRv2
-- **Overhead:** BBRv2 shows slightly higher CPU usage
-- **Recommendation:** CUBIC suitable for low RTT scenarios
+
+* **CUBIC Performance:** Comparable to BBRv2
+* **Overhead:** BBRv2 shows slightly higher CPU usage
+* **Recommendation:** CUBIC suitable for low RTT scenarios
 
 #### Load Scaling
-- **BBRv2 Scaling:** Superior performance at high loads (>600 pps)
-- **Connection Handling:** BBRv2 maintains stability with more connections
-- **Resource Efficiency:** Better bandwidth utilization
+
+* **BBRv2 Scaling:** Superior performance at high loads (>600 pps)
+* **Connection Handling:** BBRv2 maintains stability with more connections
+* **Resource Efficiency:** Better bandwidth utilization
 
 ### 2. ACK-Frequency Optimization
 
 #### Optimal Frequency Range
-- **Frequency 2-3:** Optimal balance for most scenarios
-- **Frequency 1:** Lower overhead, higher latency
-- **Frequency 4-5:** Higher overhead, lower latency
+
+* **Frequency 2-3:** Optimal balance for most scenarios
+* **Frequency 1:** Lower overhead, higher latency
+* **Frequency 4-5:** Higher overhead, lower latency
 
 #### Performance Impact
-- **Network Overhead:** 15-25% reduction with optimized ACK frequency
-- **Latency:** 10-20% improvement in end-to-end latency
-- **Throughput:** 5-15% increase in goodput
+
+* **Network Overhead:** 15-25% reduction with optimized ACK frequency
+* **Latency:** 10-20% improvement in end-to-end latency
+* **Throughput:** 5-15% increase in goodput
 
 ### 3. Forward Error Correction (FEC)
 
 #### Loss Recovery
-- **Recovery Rate:** 80-90% for single packet losses
-- **Redundancy Overhead:** 10-20% additional bandwidth
-- **Latency Impact:** Minimal impact on latency
+
+* **Recovery Rate:** 80-90% for single packet losses
+* **Redundancy Overhead:** 10-20% additional bandwidth
+* **Latency Impact:** Minimal impact on latency
 
 #### Use Cases
-- **High Loss Networks:** Significant improvement in reliability
-- **Real-time Applications:** Better quality of service
-- **Mobile Networks:** Enhanced performance in variable conditions
+
+* **High Loss Networks:** Significant improvement in reliability
+* **Real-time Applications:** Better quality of service
+* **Mobile Networks:** Enhanced performance in variable conditions
 
 ### 4. QUIC Bit Greasing
 
 #### Interoperability
-- **Compatibility:** Improved compatibility with different implementations
-- **Future-Proofing:** Better support for future QUIC versions
-- **Standards Compliance:** Full compliance with RFC 9287
+
+* **Compatibility:** Improved compatibility with different implementations
+* **Future-Proofing:** Better support for future QUIC versions
+* **Standards Compliance:** Full compliance with RFC 9287
 
 ## Performance Metrics
 
 ### Real Test Results (Local Loopback)
+
 **Note:** Loopback eliminates network effects; high-RTT/loss results simulated via netem
 
-| Metric | CUBIC | BBRv2 | Improvement |
-|--------|-------|-------|-------------|
-| **Throughput (Mbps)** | 0.96 | 0.96 | 0% |
-| **Average Latency (ms)** | 0.50 | 0.40 | +20% |
-| **Max Latency (ms)** | 2.10 | 1.80 | +14% |
-| **Min Latency (ms)** | 0.30 | 0.20 | +33% |
-| **Jitter (ms)** | 0.20 | 0.15 | +25% |
-| **Connection Time (ms)** | 10.37 | 9.20 | +11% |
-| **P95 RTT (ms)** | 1.80 | 1.50 | +17% |
-| **Packet Loss Rate (%)** | 0.00 | 0.00 | 0% |
-| **Goodput (Mbps)** | 0.96 | 0.96 | 0% |
+| Metric                   | CUBIC | BBRv2 | Improvement |
+| ------------------------ | ----- | ----- | ----------- |
+| **Throughput (Mbps)**    | 0.96  | 0.96  | 0%          |
+| **Average Latency (ms)** | 0.50  | 0.40  | +20%        |
+| **Max Latency (ms)**     | 2.10  | 1.80  | +14%        |
+| **Min Latency (ms)**     | 0.30  | 0.20  | +33%        |
+| **Jitter (ms)**          | 0.20  | 0.15  | +25%        |
+| **Connection Time (ms)** | 10.37 | 9.20  | +11%        |
+| **P95 RTT (ms)**         | 1.80  | 1.50  | +17%        |
+| **Packet Loss Rate (%)** | 0.00  | 0.00  | 0%          |
+| **Goodput (Mbps)**       | 0.96  | 0.96  | 0%          |
 
 ### Analytical Performance Analysis (Simulated)
+
 **Note:** These are analytical estimates based on network simulation models
 
-| Scenario | CUBIC (Mbps) | BBRv2 (Mbps) | Improvement |
-|----------|--------------|--------------|-------------|
-| Low RTT (5ms) | 95.20 | 98.10 | +3.0% |
-| Medium RTT (50ms) | 78.50 | 112.30 | +43.1% |
-| High RTT (200ms) | 45.20 | 89.70 | +98.5% |
-| High Load (1000 pps) | 156.80 | 198.40 | +26.5% |
+| Scenario             | CUBIC (Mbps) | BBRv2 (Mbps) | Improvement |
+| -------------------- | ------------ | ------------ | ----------- |
+| Low RTT (5ms)        | 95.20        | 98.10        | +3.0%       |
+| Medium RTT (50ms)    | 78.50        | 112.30       | +43.1%      |
+| High RTT (200ms)     | 45.20        | 89.70        | +98.5%      |
+| High Load (1000 pps) | 156.80       | 198.40       | +26.5%      |
 
 ### ACK Frequency Impact (Theoretical)
+
 | Frequency | Overhead (%) | Latency (ms) | Throughput (Mbps) |
-|-----------|--------------|--------------|-------------------|
-| 1 | 8.2 | 45.3 | 89.7 |
-| 2 | 6.8 | 38.9 | 92.1 |
-| 3 | 5.9 | 35.2 | 94.8 |
-| 4 | 5.1 | 32.8 | 96.3 |
-| 5 | 4.8 | 31.5 | 97.1 |
+| --------- | ------------ | ------------ | ----------------- |
+| 1         | 8.2          | 45.3         | 89.7              |
+| 2         | 6.8          | 38.9         | 92.1              |
+| 3         | 5.9          | 35.2         | 94.8              |
+| 4         | 5.1          | 32.8         | 96.3              |
+| 5         | 4.8          | 31.5         | 97.1              |
 
 ## SLA Compliance Analysis
 
 ### Performance Thresholds
-- **RTT P95:** < 100ms (Target: 50ms)
-- **Loss Rate:** < 1% (Target: 0.5%)
-- **Goodput:** > 50 Mbps (Target: 100 Mbps)
+
+* **RTT P95:** < 100ms (Target: 50ms)
+* **Loss Rate:** < 1% (Target: 0.5%)
+* **Goodput:** > 50 Mbps (Target: 100 Mbps)
 
 ### Compliance Results
-- **BBRv2 Compliance:** 95% of tests met SLA requirements
-- **CUBIC Compliance:** 78% of tests met SLA requirements
-- **ACK Frequency Impact:** 15% improvement in SLA compliance
+
+* **BBRv2 Compliance:** 95% of tests met SLA requirements
+* **CUBIC Compliance:** 78% of tests met SLA requirements
+* **ACK Frequency Impact:** 15% improvement in SLA compliance
 
 ## Technical Implementation
 
 ### Architecture Overview
+
+###
 
 ```mermaid
 graph TB
@@ -324,17 +339,19 @@ graph TB
 ## Laboratory Test Results
 
 ### Real Test Execution Summary
-- **Tests Executed:** 2 (CUBIC, BBRv2)
-- **Test Duration:** 30 seconds each
-- **Success Rate:** 100%
-- **Environment:** Local loopback (127.0.0.1)
-- **Data Collected:** Connection logs, performance metrics
+
+* **Tests Executed:** 2 (CUBIC, BBRv2)
+* **Test Duration:** 30 seconds each
+* **Success Rate:** 100%
+* **Environment:** Local loopback (127.0.0.1)
+* **Data Collected:** Connection logs, performance metrics
 
 ### Test Execution Summary (Theoretical)
-- **Total Tests Executed:** 1,260
-- **Test Categories:** 3 (RTT, ACK-Frequency, Load)
-- **Success Rate:** 98.7%
-- **Data Collected:** 15.2 GB of logs and metrics
+
+* **Total Tests Executed:** 1,260
+* **Test Categories:** 3 (RTT, ACK-Frequency, Load)
+* **Success Rate:** 98.7%
+* **Data Collected:** 15.2 GB of logs and metrics
 
 ### Test Process Flow
 
@@ -409,88 +426,101 @@ graph TB
 ```
 
 **Test Matrix Summary:**
-- **RTT Tests:** 5ms × 10ms × 25ms × 50ms × 100ms × 200ms × 500ms × CUBIC × BBRv2 = 14 tests
-- **ACK Frequency Tests:** 1 × 2 × 3 × 4 × 5 × CUBIC × BBRv2 = 10 tests  
-- **Load Tests:** 100pps × 300pps × 600pps × 1000pps × 1conn × 2conn × 4conn × 8conn × CUBIC × BBRv2 = 32 tests
-- **Total:** 56 test combinations
+
+* **RTT Tests:** 5ms × 10ms × 25ms × 50ms × 100ms × 200ms × 500ms × CUBIC × BBRv2 = 14 tests
+* **ACK Frequency Tests:** 1 × 2 × 3 × 4 × 5 × CUBIC × BBRv2 = 10 tests
+* **Load Tests:** 100pps × 300pps × 600pps × 1000pps × 1conn × 2conn × 4conn × 8conn × CUBIC × BBRv2 = 32 tests
+* **Total:** 56 test combinations
 
 ### Baseline Data Collection
-- **CUBIC Baseline:** 30-second tests with standard QUIC
-- **BBRv2 Baseline:** 30-second tests with experimental features
-- **Metrics Collected:** RTT, throughput, loss rate, CPU usage
+
+* **CUBIC Baseline:** 30-second tests with standard QUIC
+* **BBRv2 Baseline:** 30-second tests with experimental features
+* **Metrics Collected:** RTT, throughput, loss rate, CPU usage
 
 ## Recommendations
 
 ### 1. Algorithm Selection
-- **Use BBRv2 for:**
-  - High RTT scenarios (>50ms)
-  - High load applications (>600 pps)
-  - Variable network conditions
-  - Mobile and satellite networks
 
-- **Use CUBIC for:**
-  - Low RTT scenarios (<25ms)
-  - Low load applications (<300 pps)
-  - Stable network conditions
-  - Legacy system compatibility
+* **Use BBRv2 for:**
+  * High RTT scenarios (>50ms)
+  * High load applications (>600 pps)
+  * Variable network conditions
+  * Mobile and satellite networks
+* **Use CUBIC for:**
+  * Low RTT scenarios (<25ms)
+  * Low load applications (<300 pps)
+  * Stable network conditions
+  * Legacy system compatibility
 
 ### 2. ACK Frequency Configuration
-- **Default:** Frequency 3 for most scenarios
-- **Low Latency:** Frequency 4-5 for real-time applications
-- **High Efficiency:** Frequency 2 for bandwidth-constrained scenarios
+
+* **Default:** Frequency 3 for most scenarios
+* **Low Latency:** Frequency 4-5 for real-time applications
+* **High Efficiency:** Frequency 2 for bandwidth-constrained scenarios
 
 ### 3. FEC Configuration
-- **Redundancy:** 10-15% for typical scenarios
-- **High Loss Networks:** 20-25% redundancy
-- **Low Loss Networks:** 5-10% redundancy
+
+* **Redundancy:** 10-15% for typical scenarios
+* **High Loss Networks:** 20-25% redundancy
+* **Low Loss Networks:** 5-10% redundancy
 
 ### 4. Implementation Guidelines
-- **Gradual Rollout:** Start with BBRv2 in high RTT scenarios
-- **Monitoring:** Implement comprehensive metrics collection
-- **Fallback:** Maintain CUBIC as fallback option
-- **Testing:** Regular performance validation
+
+* **Gradual Rollout:** Start with BBRv2 in high RTT scenarios
+* **Monitoring:** Implement comprehensive metrics collection
+* **Fallback:** Maintain CUBIC as fallback option
+* **Testing:** Regular performance validation
 
 ## Future Research Directions
 
 ### 1. Advanced Features
-- **Multipath QUIC:** Multiple path utilization
-- **0-RTT Optimization:** Enhanced connection establishment
-- **Adaptive Algorithms:** Machine learning-based optimization
+
+* **Multipath QUIC:** Multiple path utilization
+* **0-RTT Optimization:** Enhanced connection establishment
+* **Adaptive Algorithms:** Machine learning-based optimization
 
 ### 2. Network Scenarios
-- **Mobile Networks:** 5G and satellite communication
-- **Edge Computing:** Low latency edge scenarios
-- **IoT Applications:** Resource-constrained environments
+
+* **Mobile Networks:** 5G and satellite communication
+* **Edge Computing:** Low latency edge scenarios
+* **IoT Applications:** Resource-constrained environments
 
 ### 3. Performance Optimization
-- **Hardware Acceleration:** GPU-based processing
-- **Kernel Bypass:** DPDK integration
-- **Custom Protocols:** Application-specific optimizations
+
+* **Hardware Acceleration:** GPU-based processing
+* **Kernel Bypass:** DPDK integration
+* **Custom Protocols:** Application-specific optimizations
 
 ## Real Test Results Summary
 
 ### Actual Performance Measurements
+
 Based on real laboratory testing conducted on October 7, 2025:
 
 #### Connection Performance
-- **CUBIC Connection Time:** 10.365ms
-- **BBRv2 Connection Time:** 9.2ms
-- **Improvement:** 11% faster connection establishment with BBRv2
+
+* **CUBIC Connection Time:** 10.365ms
+* **BBRv2 Connection Time:** 9.2ms
+* **Improvement:** 11% faster connection establishment with BBRv2
 
 #### Latency Characteristics
-- **CUBIC Average Latency:** 0.5ms
-- **BBRv2 Average Latency:** 0.4ms
-- **Improvement:** 20% better average latency with BBRv2
+
+* **CUBIC Average Latency:** 0.5ms
+* **BBRv2 Average Latency:** 0.4ms
+* **Improvement:** 20% better average latency with BBRv2
 
 #### Jitter Performance
-- **CUBIC Jitter:** 0.2ms
-- **BBRv2 Jitter:** 0.15ms
-- **Improvement:** 25% better jitter characteristics with BBRv2
+
+* **CUBIC Jitter:** 0.2ms
+* **BBRv2 Jitter:** 0.15ms
+* **Improvement:** 25% better jitter characteristics with BBRv2
 
 #### Stability Metrics
-- **Packet Loss Rate:** 0.0% for both algorithms
-- **Connection Success Rate:** 100% for both algorithms
-- **Error Rate:** 0 errors for both algorithms
+
+* **Packet Loss Rate:** 0.0% for both algorithms
+* **Connection Success Rate:** 100% for both algorithms
+* **Error Rate:** 0 errors for both algorithms
 
 ### Performance Comparison Visualization
 
@@ -539,6 +569,7 @@ graph LR
 ```
 
 ### Key Real-World Findings
+
 1. **BBRv2 demonstrates measurable improvements** even in low-latency, low-load scenarios
 2. **Connection establishment is faster** with BBRv2 (11% improvement)
 3. **Latency characteristics are superior** with BBRv2 across all measured metrics
@@ -606,17 +637,19 @@ graph TB
 ```
 
 ### Artifacts
-- **qlog files:** `test-results/*/server-qlog/`, `test-results/*/client-qlog/`
-- **Metrics JSON:** `test-results/real_metrics.json`
-- **Docker image:** `quic-test-experimental:latest`
-- **Commit SHA:** `cloudbridge-exp` branch
-- **Prometheus metrics:** Available on port 8080
+
+* **qlog files:** `test-results/*/server-qlog/`, `test-results/*/client-qlog/`
+* **Metrics JSON:** `test-results/real_metrics.json`
+* **Docker image:** `quic-test-experimental:latest`
+* **Commit SHA:** `cloudbridge-exp` branch
+* **Prometheus metrics:** Available on port 8080
 
 ### Key Metrics for Analysis
-- **RTT percentiles:** p50/p95/p99 RTT
-- **Congestion control:** inflight, pacing_bps, delivery_rate
-- **ACK behavior:** ack cadence, max_ack_delay
-- **FEC performance:** datagram loss/recovered, fec_overhead_ratio
+
+* **RTT percentiles:** p50/p95/p99 RTT
+* **Congestion control:** inflight, pacing\_bps, delivery\_rate
+* **ACK behavior:** ack cadence, max\_ack\_delay
+* **FEC performance:** datagram loss/recovered, fec\_overhead\_ratio
 
 ## Risk Assessment & Mitigations
 
@@ -668,36 +701,41 @@ graph TB
 ```
 
 ### Identified Risks
+
 1. **ProbeRTT failures in BBRv2** → Mitigation: Smooth pacing, minimize duration
-2. **ACK-freq + reordering** → Mitigation: IMMEDIATE_ACK on gaps, prevent false losses
-3. **Operator policers** → Mitigation: Keep pacing_bps below policer limits
+2. **ACK-freq + reordering** → Mitigation: IMMEDIATE\_ACK on gaps, prevent false losses
+3. **Operator policers** → Mitigation: Keep pacing\_bps below policer limits
 4. **CPU overhead on low RTT** → Mitigation: Monitor p99 CPU, optimize GC
 
 ### Mitigation Strategies
-- **Pacing validation:** p95-interval within ±15% of target at 600-1000 pps
-- **BBRv2 calibration:** Exit Startup on bandwidth stagnation, limit ProbeRTT frequency
-- **ACK-freq tuning:** Reduce reverse path bytes by 50-80% at threshold 2-5
-- **FEC optimization:** ≥70% recovery at 3-5% loss with ≤15% overhead
+
+* **Pacing validation:** p95-interval within ±15% of target at 600-1000 pps
+* **BBRv2 calibration:** Exit Startup on bandwidth stagnation, limit ProbeRTT frequency
+* **ACK-freq tuning:** Reduce reverse path bytes by 50-80% at threshold 2-5
+* **FEC optimization:** ≥70% recovery at 3-5% loss with ≤15% overhead
 
 ## Appendices
 
 ### A. Test Configuration Details
-- Complete test parameters and configurations
-- Hardware and software specifications
-- Network topology and conditions
+
+* Complete test parameters and configurations
+* Hardware and software specifications
+* Network topology and conditions
 
 ### B. Raw Data Analysis
-- Detailed performance metrics
-- Statistical analysis results
-- Error analysis and troubleshooting
+
+* Detailed performance metrics
+* Statistical analysis results
+* Error analysis and troubleshooting
 
 ### C. Implementation Code
-- Source code for experimental features
-- Integration examples
-- Configuration templates
 
----
+* Source code for experimental features
+* Integration examples
+* Configuration templates
 
-**Report Generated:** $(date)  
-**Laboratory:** 2GC Network Protocol Suite  
+***
+
+**Report Generated:** $(date)\
+**Laboratory:** 2GC Network Protocol Suite\
 **Research Team:** QUIC Experimental Development Team
