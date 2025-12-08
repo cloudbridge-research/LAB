@@ -49,8 +49,3 @@ description: >-
 * Validation: each report includes verification steps and cross-checks where applicable.
 
 ***
-
-## Maintenance
-
-* Update this README when adding new laboratory reports.
-* Ensure each new report includes methodology, environment, metrics, and clear conclusions.
