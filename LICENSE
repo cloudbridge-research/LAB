@@ -1,22 +1,50 @@
-MIT License
+Creative Commons Attribution 4.0 International License (CC BY 4.0)
 
-Copyright (c) 2025  CloudBridge Research
+Copyright (c) 2025 CloudBridge Research Center
+АНО "Центр исследований и разработок сетевых технологий CloudBridge Research"
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this documentation (the "Documentation"), to deal in the Documentation
-without restriction, including without limitation the rights to use, copy,
-modify, merge, publish, distribute, sublicense, and/or sell copies of the
-Documentation, and to permit persons to whom the Documentation is furnished
-to do so, subject to the following conditions:
+This work is licensed under the Creative Commons Attribution 4.0 International License.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Documentation.
+You are free to:
+  - Share — copy and redistribute the material in any medium or format
+  - Adapt — remix, transform, and build upon the material for any purpose, even commercially
 
-THE DOCUMENTATION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE DOCUMENTATION OR THE USE OR OTHER DEALINGS IN
-THE DOCUMENTATION.
+Under the following terms:
+  - Attribution — You must give appropriate credit, provide a link to the license, 
+    and indicate if changes were made. You may do so in any reasonable manner, 
+    but not in any way that suggests the licensor endorses you or your use.
 
+  - No additional restrictions — You may not apply legal terms or technological 
+    measures that legally restrict others from doing anything the license permits.
+
+Notices:
+  - You do not have to comply with the license for elements of the material in 
+    the public domain or where your use is permitted by an applicable exception 
+    or limitation.
+  
+  - No warranties are given. The license may not give you all of the permissions 
+    necessary for your intended use. For example, other rights such as publicity, 
+    privacy, or moral rights may limit how you use the material.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+---
+
+ATTRIBUTION GUIDELINES
+
+When using or citing this work, please include:
+
+  CloudBridge Research Center. (2025). [Report Title].
+  Retrieved from https://github.com/cloudbridge-research/LAB
+  Licensed under CC BY 4.0
+
+For academic citations, please follow the citation format specified in each report.
+
+---
+
+CONTACT
+
+For questions about licensing or permissions:
+  - Website: https://cloudbridge-research.ru
+  - Contact: https://cloudbridge-research.ru/contact
+  - GitHub: https://github.com/cloudbridge-research
